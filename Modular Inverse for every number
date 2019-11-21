@@ -1,0 +1,21 @@
+//Here 'm' is prime number. 
+
+Proof:-
+
+We have:
+  m mod i = m − ⌊m/i⌋⋅ i
+Taking both sides modulo m yields:
+  m mod i ≡ − ⌊m/i⌋ ⋅ i mod m
+Multiply both sides by i^−1 ⋅ (m mod i) ^− 1 yields
+  (m mod i) ⋅ i^−1 ⋅ (m mod i)^−1 ≡ −⌊m/i⌋ ⋅ i ⋅ i^−1 ⋅ (m mod i)^−1 mod m,
+which simplifies to:
+  i^−1 ≡ −⌊m/i⌋⋅ (m mod i)^−1 mod m .
+  
+
+
+
+//Implementation
+
+inv[1] = 1;
+for(int i = 2; i < m; ++i)
+    inv[i] = (m - (m/i) * inv[m%i] % m) % m;
